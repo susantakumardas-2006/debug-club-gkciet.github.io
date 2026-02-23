@@ -529,25 +529,6 @@ a:not(.btn):not(.nav-link):not(.nav-segment-item) {
     }
 }
 
-/* Dark theme scrollbar styling */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-dark) !important;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(0, 229, 153, 0.6) !important;
-    border-radius: 4px;
-
-    &:hover {
-        background: rgba(0, 229, 153, 0.6) !important;
-    }
-}
-
 /* Glass card defaults for dark theme */
 .glass-card {
     background: rgba(10, 10, 15, 0.6);
