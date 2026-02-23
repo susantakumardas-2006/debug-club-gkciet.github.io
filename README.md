@@ -148,6 +148,140 @@ Hidden content here
 
 ## Customizing Styles
 
+### Theme System (CSS Variables)
+
+**⚡ IMPORTANT: Read this before adding any new styles or components!**
+
+This website uses a **CSS Variable-based theme system** that automatically supports both light and dark modes. When you add new elements, you MUST follow this pattern to ensure they work in both themes.
+
+#### The Golden Rule
+
+Always use CSS variables for colors - never hardcode color values:
+
+```scss
+// ✅ CORRECT - This will work in both light and dark modes
+.my-new-component {
+    background-color: var(--bg-surface) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+// ❌ WRONG - This will only work in dark mode
+.my-new-component {
+    background-color: #0a0a0c;  // Won't change in light mode!
+    color: #FFFFFF;              // Hard to read in light mode!
+}
+```
+
+#### Available CSS Variables
+
+Use these variables in your styles. They automatically adapt to light/dark themes:
+
+**Colors & Accents:**
+- `var(--primary-brand)` - Main accent color
+- `var(--secondary-brand)` - Secondary accent
+- `var(--accent-cyan)` - Tertiary accent
+
+**Backgrounds:**
+- `var(--bg-dark)` - Main page background
+- `var(--bg-surface)` - Card/container background
+- `var(--bg-surface-elevated)` - Elevated surfaces
+- `var(--bg-surface-lighter)` - Light surfaces
+
+**Text:**
+- `var(--text-primary)` - Main headings and important text
+- `var(--text-secondary)` - Body text and descriptions
+- `var(--text-muted)` - Helper text, disabled text
+- `var(--text-disabled)` - Disabled state text
+
+**Utility:**
+- `var(--border-color)` - Borders and dividers
+
+#### Quick Examples
+
+**Adding a new card:**
+```scss
+.my-card {
+    background-color: var(--bg-surface) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px;
+    padding: 1rem;
+}
+```
+
+**Adding a new button:**
+```scss
+.btn-custom {
+    background-color: var(--primary-brand) !important;
+    color: var(--bg-dark) !important;
+    
+    &:hover {
+        background-color: var(--primary-brand-hover) !important;
+    }
+}
+```
+
+**Adding text with proper contrast:**
+```scss
+.my-description {
+    color: var(--text-secondary) !important;  // Body text
+}
+
+.my-helper-text {
+    color: var(--text-muted) !important;  // Subtle/disabled text
+}
+```
+
+#### How It Works
+
+- **Dark Theme** (default): Neon green accents (#00FF9D) on black background
+- **Light Theme**: Blue accents (#2563EB) on white background
+- When users toggle the theme, CSS variables automatically update
+- Any element using these variables instantly adapts - no extra code needed!
+
+#### Pre-built Utility Classes
+
+Want to skip writing SCSS? Use these ready-made classes:
+
+```html
+<!-- Text colors -->
+<p class="text-brand">Highlighted text</p>
+<p class="text-brand-light">Secondary text</p>
+<p class="text-brand-muted">Muted/helper text</p>
+
+<!-- Backgrounds -->
+<div class="bg-theme-surface">Card-like container</div>
+<div class="bg-theme-elevated">Elevated surface</div>
+
+<!-- Buttons -->
+<button class="btn btn-theme-primary">Primary Button</button>
+<button class="btn btn-theme-secondary">Secondary Button</button>
+
+<!-- Containers -->
+<div class="themed-container">Auto-themed container</div>
+<section class="themed-section">Auto-themed section</section>
+```
+
+#### Checklist Before Submitting Code
+
+When you add any new element (page, component, card, button):
+
+- [ ] Used `var(--variable-name)` for ALL colors
+- [ ] Added `!important` flags to CSS rules
+- [ ] Tested in **dark mode** - does it look good?
+- [ ] Tested in **light mode** - does it look good?
+- [ ] Text is readable in both themes
+- [ ] Hover/focus states work in both themes
+
+#### For More Details
+
+See the complete theme guide: [THEME-SYSTEM-GUIDE.md](THEME-SYSTEM-GUIDE.md)
+
+---
+
+### Custom Styling (Advanced)
+
 To customize colors and styles, create `assets/page.scss`:
 
 ```scss

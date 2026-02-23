@@ -10,7 +10,7 @@ full_width: true
     <!-- Hero Section -->
     <div class="text-center mb-5 pb-4 fade-in-up">
         <span class="badge bg-white bg-opacity-10 text-white border border-white border-opacity-25 rounded-pill mb-3 px-3 py-2">KNOWLEDGE BASE</span>
-        <h1 class="display-3 fw-bold mb-3"><span class="text-gradient-purple">Curated Resources</span></h1>
+        <h1 class="display-3 fw-bold mb-3"><span class="text-brand">Curated Resources</span></h1>
         <p class="text-muted mx-auto lead" style="max-width: 600px;">
             Handpicked roadmaps, documentation, and archives to accelerate your learning journey.
         </p>

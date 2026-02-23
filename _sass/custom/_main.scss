@@ -10,6 +10,38 @@
 /* 1. RESET & ENHANCED DEFAULTS */
 :root {
     color-scheme: dark;
+    
+    /* ========================================= */
+    /* CSS CUSTOM PROPERTIES - DARK THEME */
+    /* Use these for ALL new components! */
+    /* ========================================= */
+    
+    /* PRIMARY COLORS */
+    --primary-brand: #{$brand-primary};           /* #00FF9D - Neon Green */
+    --primary-brand-hover: #{$brand-primary-hover}; /* #5CFFC3 - Brighter */
+    --primary-brand-dim: #{$brand-primary-dim};   /* #00CC7D - Dimmed */
+    --secondary-brand: #{$brand-secondary};       /* #BC13FE - Purple */
+    --accent-cyan: #{$brand-accent};              /* #00F0FF - Cyan */
+    
+    /* BACKGROUND COLORS */
+    --bg-dark: #{$brand-dark};                    /* #030305 - Main bg */
+    --bg-surface: #{$brand-surface};              /* #0a0a0c - Surface */
+    --bg-surface-elevated: #{$brand-surface-elevated}; /* #121216 */
+    --bg-surface-lighter: #{$brand-surface-lighter};   /* #1A1A20 */
+    
+    /* TEXT COLORS */
+    --text-primary: #{$text-primary};             /* #FFFFFF - Main text */
+    --text-secondary: #{$text-secondary};         /* #B0B0C0 - Secondary */
+    --text-muted: #{$text-muted};                 /* #6E6E7A - Muted */
+    --text-disabled: #{$text-disabled};           /* #404045 - Disabled */
+    
+    /* BORDER & DIVIDER */
+    --border-color: #{$brand-border};             /* rgba(255,255,255,0.08) */
+    
+    /* SCROLLBAR */
+    scrollbar-color: #{$brand-primary} #{$brand-surface};
+    scrollbar-width: thin;
+    
     /* Force Bootstrap CSS Variables - Monochrome */
     --bs-blue: #ffffff;
     --bs-indigo: #e0e0e0;
@@ -25,7 +57,6 @@
     --bs-gray: #888888;
     --bs-gray-dark: #333333;
     --bs-primary: #{$brand-primary};
-    /* White as primary */
     --bs-secondary: #888888;
     --bs-success: #ffffff;
     --bs-info: #ffffff;
@@ -38,10 +69,6 @@
 
     --bs-link-color: #{$brand-primary};
     --bs-link-hover-color: #{$text-secondary};
-
-    /* Custom scrollbar - Green Theme */
-    scrollbar-color: #{$brand-primary} #{$brand-surface};
-    scrollbar-width: thin;
 }
 
 /* Enhanced Scrollbar Webkit - Green Theme */
@@ -51,15 +78,15 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: $brand-surface;
+    background: var(--bg-dark) !important;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: $text-secondary;
+    background: var(--primary-brand) !important;
     border-radius: $radius-full;
 
     &:hover {
-        background: $brand-primary;
+        background: var(--primary-brand-hover) !important;
     }
 }
 
@@ -404,6 +431,224 @@ body.dark-theme {
     label, .form-label {
         color: #B0B0C0 !important;
     }
+
+    /* Brand button styling in dark theme */
+    .btn-brand {
+        background-color: $brand-primary !important;
+        border: 2px solid $brand-primary !important;
+        color: #000 !important;
+        font-weight: 600;
+
+        i, .fas, .fab, .far {
+            color: #000 !important;
+        }
+
+        &:hover {
+            background-color: $brand-primary-hover !important;
+            border-color: $brand-primary-hover !important;
+            color: #000 !important;
+            
+            i, .fas, .fab, .far {
+                color: #000 !important;
+            }
+        }
+
+        &:active {
+            background-color: $brand-primary-dim !important;
+            color: #000 !important;
+        }
+
+        &.active {
+            background-color: $brand-primary !important;
+            color: #000 !important;
+        }
+    }
+
+    /* Transparent buttons in dark theme */
+    .btn-transparent {
+        background: transparent !important;
+        border: none !important;
+        color: $text-secondary !important;
+
+        i, .fas, .fab, .far {
+            color: $text-secondary !important;
+        }
+
+        &:hover {
+            background: rgba(0, 229, 153, 0.08) !important;
+            color: $brand-primary !important;
+            
+            i, .fas, .fab, .far {
+                color: $brand-primary !important;
+            }
+        }
+
+        &.active {
+            color: $brand-primary !important;
+            
+            i, .fas, .fab, .far {
+                color: $brand-primary !important;
+            }
+        }
+
+        &.hover-white {
+            &:hover {
+                color: #FFFFFF !important;
+                
+                i, .fas, .fab, .far {
+                    color: #FFFFFF !important;
+                }
+            }
+        }
+    }
+
+    /* Navigation segment styling in dark theme */
+    .nav-segment-container {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(0, 229, 153, 0.2) !important;
+
+        .nav-segment-item {
+            transition: all 0.3s ease;
+
+            &.btn-brand {
+                background-color: $brand-primary !important;
+                border-color: $brand-primary !important;
+                color: #000 !important;
+
+                &:hover {
+                    background-color: $brand-primary-hover !important;
+                    border-color: $brand-primary-hover !important;
+                }
+            }
+
+            &.btn-transparent {
+                color: $text-secondary !important;
+
+                &:hover {
+                    background: rgba(0, 229, 153, 0.1) !important;
+                    color: #FFFFFF !important;
+                }
+            }
+        }
+    }
+
+    /* Team card styling in dark theme */
+    .team-card {
+        background: rgba(10, 10, 15, 0.6) !important;
+        border: 1px solid rgba(0, 229, 153, 0.1) !important;
+
+        h5, h4, h3 {
+            color: #FFFFFF !important;
+        }
+
+        p, .text-secondary, .small {
+            color: $text-secondary !important;
+        }
+
+        img {
+            border-color: rgba(0, 229, 153, 0.15) !important;
+        }
+
+        .social-overlay {
+            background: rgba(0, 0, 0, 0.85) !important;
+        }
+
+        .social-item {
+            a {
+                color: $brand-primary !important;
+
+                &:hover {
+                    color: $brand-primary-hover !important;
+                }
+            }
+        }
+    }
+
+    /* Badges in dark theme */
+    .badge {
+        background-color: rgba(0, 229, 153, 0.15) !important;
+        color: $brand-primary !important;
+        border-color: rgba(0, 229, 153, 0.2) !important;
+    }
+
+    /* Spinner styling in dark theme */
+    .spinner-border {
+        border-color: rgba(0, 229, 153, 0.1) !important;
+        border-right-color: $brand-primary !important;
+    }
+
+    .spinner-border-sm {
+        border-color: rgba(0, 229, 153, 0.1) !important;
+        border-right-color: $brand-primary !important;
+    }
+
+    /* ========================================= */
+    /* FUTURE-PROOFING: DARK THEME DEFAULTS */
+    /* Ensures any future elements work properly */
+    /* ========================================= */
+    
+    /* Default text colors for new elements */
+    h1, h2, h3, h4, h5, h6 {
+        color: #FFFFFF !important;
+    }
+    
+    p, span, small {
+        color: $text-secondary !important;
+    }
+    
+    /* Ensure all inputs have dark theme styling */
+    input, textarea, select, .form-control {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        color: #FFFFFF !important;
+        border-color: rgba(0, 229, 153, 0.2) !important;
+        
+        &:focus {
+            border-color: $brand-primary !important;
+            box-shadow: 0 0 0 4px rgba(0, 229, 153, 0.15) !important;
+        }
+        
+        &::placeholder {
+            color: $text-muted !important;
+        }
+    }
+    
+    /* Default border styling for new elements */
+    .border, [class*="border-"] {
+        border-color: rgba(0, 229, 153, 0.1) !important;
+    }
+    
+    /* Ensure new icons and SVGs inherit color properly */
+    svg, i, [class*="icon"] {
+        color: inherit !important;
+    }
+    
+    /* Default styling for new list elements */
+    li, .list-item {
+        color: $text-secondary !important;
+    }
+    
+    /* Ensure tables in new contexts have proper styling */
+    table {
+        color: $text-secondary !important;
+        
+        thead {
+            background: rgba(255, 255, 255, 0.08) !important;
+            color: #FFFFFF !important;
+        }
+        
+        tbody tr:hover {
+            background: rgba(0, 229, 153, 0.05) !important;
+        }
+    }
+    
+    /* Default link styling in dark theme */
+    a:not(.btn):not(.nav-link):not(.nav-segment-item) {
+        color: $brand-primary !important;
+        
+        &:hover {
+            color: $brand-primary-hover !important;
+        }
+    }
 }
 
 /* Button sizes */
@@ -738,7 +983,7 @@ body.dark-theme {
     /* Navbar shadow on scroll */
     &.scrolled {
         background: rgba($brand-dark, 0.98);
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(0, 229, 153, 0.1);
+        box-shadow: 0 4px 24px rgba(171, 176, 190, 0.6), 0 1px 0 rgba(0, 229, 153, 0.1);
         padding: $spacing-sm 0;
         border-bottom: 1px solid rgba(0, 229, 153, 0.15);
     }
@@ -759,18 +1004,24 @@ body.dark-theme {
 
     /* Mobile menu toggle */
     .navbar-toggler {
-        border: 1px solid rgba(0, 229, 153, 0.2);
+        border: 1px solid var(--border-color) !important;
         padding: $spacing-sm $spacing-md;
         border-radius: $radius-sm;
         transition: all $transition-base;
+        color: var(--text-primary) !important;
+        background-color: transparent !important;
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2300FF9D' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
 
         &:hover {
-            background: rgba(0, 229, 153, 0.1);
-            border-color: rgba(0, 229, 153, 0.4);
+            background: var(--bg-surface) !important;
+            border-color: var(--primary-brand) !important;
         }
 
         &:focus {
-            box-shadow: 0 0 0 3px rgba(0, 229, 153, 0.2);
+            box-shadow: 0 0 0 3px var(--primary-brand) !important;
             outline: none;
         }
     }
@@ -957,19 +1208,43 @@ body.dark-theme {
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: $brand-dark;
+    background: var(--bg-dark) !important;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 229, 153, 0.3);
+    background: var(--primary-brand) !important;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 229, 153, 0.5);
+    background: var(--primary-brand-hover) !important;
+}
+
+/* Dark theme scrollbar styling */
+body.dark-theme {
+    scrollbar-color: var(--primary-brand) var(--bg-dark);
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--bg-dark) !important;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(0, 229, 153, 0.6) !important;
+        border-radius: 4px;
+
+        &:hover {
+            background: rgba(0, 229, 153, 0.6) !important;
+        }
+    }
 }
 
 /* ========================================= */
@@ -1628,6 +1903,11 @@ img {
     white-space: nowrap;
     flex-shrink: 0;
     transition: all 0.3s ease;
+    color: inherit !important;
+
+    i, .fas, .fab {
+        color: inherit !important;
+    }
 
     @media (min-width: 768px) {
         /* Desktop styles for items */
@@ -1639,18 +1919,69 @@ img {
         font-weight: 500;
         border: 1px solid transparent;
         /* Prevent layout shift */
+        background: transparent;
+
+        i, .fas, .fab {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
 
         &:hover {
             color: #fff !important;
             background: rgba(255, 255, 255, 0.05);
+
+            i, .fas, .fab {
+                color: #fff !important;
+            }
         }
 
         &.active,
         &.btn-brand {
-            background-color: $brand-primary;
+            background-color: $brand-primary !important;
             color: #000 !important;
             font-weight: 600;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-color: $brand-primary !important;
+
+            i, .fas, .fab {
+                color: #000 !important;
+            }
+
+            &:hover {
+                background-color: $brand-primary-hover !important;
+                border-color: $brand-primary-hover !important;
+                color: #000 !important;
+
+                i, .fas, .fab {
+                    color: #000 !important;
+                }
+            }
+        }
+
+        &.btn-transparent {
+            background: transparent !important;
+            border: none !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+
+            i, .fas, .fab {
+                color: rgba(255, 255, 255, 0.6) !important;
+            }
+
+            &:hover {
+                background: rgba(0, 229, 153, 0.1) !important;
+                color: #FFFFFF !important;
+
+                i, .fas, .fab {
+                    color: #FFFFFF !important;
+                }
+            }
+
+            &.hover-white:hover {
+                color: #FFFFFF !important;
+
+                i, .fas, .fab {
+                    color: #FFFFFF !important;
+                }
+            }
         }
     }
 
@@ -1660,13 +1991,52 @@ img {
         font-size: 0.85rem;
         border: 1px solid rgba(255, 255, 255, 0.1);
         background: rgba(255, 255, 255, 0.05);
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(255, 255, 255, 0.7) !important;
+
+        i, .fas, .fab {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
 
         &.active,
         &.btn-brand {
-            background: $brand-primary;
+            background: $brand-primary !important;
             color: #000 !important;
-            border-color: $brand-primary;
+            border-color: $brand-primary !important;
+
+            i, .fas, .fab {
+                color: #000 !important;
+            }
+
+            &:hover {
+                background: $brand-primary-hover !important;
+                border-color: $brand-primary-hover !important;
+            }
+        }
+
+        &.btn-transparent {
+            background: transparent !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+
+            i, .fas, .fab {
+                color: rgba(255, 255, 255, 0.6) !important;
+            }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.1) !important;
+                color: #FFFFFF !important;
+
+                i, .fas, .fab {
+                    color: #FFFFFF !important;
+                }
+            }
+
+            &.hover-white:hover {
+                color: #FFFFFF !important;
+
+                i, .fas, .fab {
+                    color: #FFFFFF !important;
+                }
+            }
         }
     }
 }
@@ -1690,10 +2060,49 @@ img {
 
 /* Gradient Text Utility */
 .text-gradient-purple {
-    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-brand) !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+}
+
+.text-brand {
+    color: var(--primary-brand) !important;
+    font-weight: 600;
+}
+
+/* Social Icon Button Styling */
+.social-icon-btn {
+    background: var(--bg-surface) !important;
+    color: var(--text-primary) !important;
+    border: 2px solid var(--primary-brand) !important;
+    transition: all 0.3s ease !important;
+    font-weight: 600;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    i, .fab, .fas {
+        color: var(--primary-brand) !important;
+        transition: color 0.3s ease !important;
+    }
+
+    &:hover {
+        background: var(--primary-brand) !important;
+        color: var(--bg-dark) !important;
+        border-color: var(--primary-brand) !important;
+        transform: translateY(-3px) !important;
+        box-shadow: 0 10px 25px rgba(0, 255, 157, 0.3) !important;
+
+        i, .fab, .fas {
+            color: var(--bg-dark) !important;
+        }
+    }
+
+    &:active {
+        transform: translateY(-1px) !important;
+    }
 }
 
 /* =========================================
@@ -1796,6 +2205,151 @@ img {
         color: $text-muted !important;
     }
 }
+
+/* ========================================= */
+/* UTILITY CLASSES & MIXIN DOCUMENTATION */
+/* For styling NEW elements automatically   */
+/* ========================================= */
+
+/**
+ * CRITICAL: How to Style New Elements for Light/Dark Theme
+ * 
+ * ALWAYS use CSS custom properties (variables) defined in :root for new styles
+ * These automatically switch between light/dark themes!
+ * 
+ * Available CSS Variables:
+ * - Colors: --primary-brand, --text-primary, --bg-dark, --border-color, etc.
+ * - Check :root and body.light-theme sections for full list
+ * 
+ * EXAMPLES FOR NEW COMPONENTS:
+ * 
+ * 1. New Card Component:
+ *    .my-new-card {
+ *        background-color: var(--bg-surface) !important;
+ *        color: var(--text-primary) !important;
+ *        border: 1px solid var(--border-color) !important;
+ *    }
+ * 
+ * 2. New Button Variant:
+ *    .btn-custom {
+ *        background: var(--primary-brand) !important;
+ *        color: var(--bg-dark) !important;
+ *        &:hover {
+ *            background: var(--primary-brand-hover) !important;
+ *        }
+ *    }
+ * 
+ * 3. New Text Element:
+ *    .custom-text {
+ *        color: var(--text-secondary) !important;
+ *    }
+ *    .custom-text-muted {
+ *        color: var(--text-muted) !important;
+ *    }
+ * 
+ * 4. New Form Input:
+ *    input, textarea {
+ *        background: var(--bg-surface) !important;
+ *        color: var(--text-primary) !important;
+ *        border: 1px solid var(--border-color) !important;
+ *        &:focus {
+ *            border-color: var(--primary-brand) !important;
+ *        }
+ *    }
+ * 
+ * The system will AUTOMATICALLY handle:
+ * ✓ Dark theme (neon green #00FF9D on black)
+ * ✓ Light theme (blue #2563EB on white)
+ * ✓ Text contrast & readability
+ * ✓ Hover states & interactions
+ * 
+ * NO ADDITIONAL CSS NEEDED - just use the variables!
+ */
+
+/* Utility Classes for Common Theming Scenarios */
+
+/* Text Color Utilities */
+.text-brand {
+    color: var(--primary-brand) !important;
+}
+
+.text-brand-light {
+    color: var(--text-secondary) !important;
+}
+
+.text-brand-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Background Utilities */
+.bg-theme-surface {
+    background-color: var(--bg-surface) !important;
+    color: var(--text-primary) !important;
+}
+
+.bg-theme-elevated {
+    background-color: var(--bg-surface-elevated) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Border Utilities */
+.border-theme {
+    border-color: var(--border-color) !important;
+}
+
+/* Button Utilities */
+.btn-theme-primary {
+    background-color: var(--primary-brand) !important;
+    border-color: var(--primary-brand) !important;
+    color: var(--bg-dark) !important;
+    
+    &:hover {
+        background-color: var(--primary-brand-hover) !important;
+        border-color: var(--primary-brand-hover) !important;
+    }
+}
+
+.btn-theme-secondary {
+    background-color: var(--bg-surface) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    
+    &:hover {
+        background-color: var(--bg-surface-lighter) !important;
+        border-color: var(--primary-brand) !important;
+    }
+}
+
+/* Icon Utilities - ensures icons inherit colors */
+.icon-inherit {
+    i, .fas, .fab, .far, svg {
+        color: inherit !important;
+    }
+}
+
+/* Themed Container */
+.themed-container {
+    background-color: var(--bg-surface) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+/* Themed Section - for new sections/pages */
+.themed-section {
+    background-color: var(--bg-dark) !important;
+    color: var(--text-secondary) !important;
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--text-primary) !important;
+    }
+    
+    p, .lead {
+        color: var(--text-secondary) !important;
+    }
+}
+
 
 /* Glass card defaults for dark theme */
 .glass-card {
